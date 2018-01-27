@@ -32,17 +32,9 @@ from linebot.models import (
 app = Flask(__name__)
 
 # get channel_secret and channel_access_token from your environment variable
-channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
-channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
-if channel_secret is None:
-    print('Specify LINE_CHANNEL_SECRET as environment variable.')
-    sys.exit(1)
-if channel_access_token is None:
-    print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
-    sys.exit(1)
 
-line_bot_api = LineBotApi(channel_access_token)
-parser = WebhookParser(channel_secret)
+line_bot_api = LineBotApi('7d092321365ffda93aa4867808e96e34')
+parser = WebhookParser('8SkjJ6hELMBB5b2nKctz47GWyUEOKCLUgmYPNwN/9QYJNiSm8HNW3uWTiFYaBYwrRXm12YKciXkpdfGk27b3seeC/+d9DH4+JlRho1uVM2x100yRbclx1FInKEtNWy/bY4kgqtuhD3mYLmQL5i9ltgdB04t89/1O/w1cDnyilFU=')
 
 
 @app.route("/callback", methods=['POST'])
