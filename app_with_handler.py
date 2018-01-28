@@ -68,10 +68,6 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def message_text(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text)
-    )
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
     if event.message.text == "hi bob":
@@ -98,6 +94,11 @@ def message_text(event):
             )
         )
         return 0
+    else:
+        line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text)
+    )
 
     #print(event) {"message": {"id": "7383075542344", "text": "T", "type": "text"}, "replyToken": "bb86d70489324c9d97a4e3e62b581fe6", "source": {"type": "user", "userId": "Uec77d4b728f94e4f02c6aac6b15e5788"}, "timestamp": 1517130847372, "type": "message"}
     #print(TextMessage) <class 'linebot.models.messages.TextMessage'>
