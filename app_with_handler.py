@@ -67,6 +67,17 @@ def message_text(event):
         TextSendMessage(text=event.message.text)
     )
     print(TextMessage)
+    print(MessageEvent)
+
+
+@handler.add(MessageEvent, message=ImageMessage)
+def message_text(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="this is an image")
+    )
+    print(ImageMessage)
+    print(MessageEvent)
 
 
 if __name__ == "__main__":
