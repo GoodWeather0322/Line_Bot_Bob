@@ -9,3 +9,6 @@ Werkzeug==0.11.15
 psycopg2==2.7
 line-bot-sdk
 flask
+python-editor
+pycparser
+imgurpython
