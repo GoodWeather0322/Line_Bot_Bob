@@ -72,7 +72,34 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text=event.message.text)
     )
-    print(event)
+    print("event.reply_token:", event.reply_token)
+    print("event.message.text:", event.message.text)
+    if event.message.text == "hi bob":
+        buttons_template = TemplateSendMessage(
+            alt_text='HI BOB template',
+            template=ButtonsTemplate(
+                title='BOB的功能',
+                text='請選擇',
+                thumbnail_image_url='https://i.imgur.com/xQF5dZT.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='BOB現在很廢 沒有功能',
+                        text='BOB現在很廢 沒有功能'
+                    ),
+                    MessageTemplateAction(
+                        label='BOB現在很廢 只會回話',
+                        text='BOB現在很廢 只會回話'
+                    ),
+                    MessageTemplateAction(
+                        label='BOB現在很廢 只知道你傳啥',
+                        text='BOB現在很廢 只知道你傳啥'
+                    ),
+                ]
+            )
+        )
+        return 0
+
+    #print(event) {"message": {"id": "7383075542344", "text": "T", "type": "text"}, "replyToken": "bb86d70489324c9d97a4e3e62b581fe6", "source": {"type": "user", "userId": "Uec77d4b728f94e4f02c6aac6b15e5788"}, "timestamp": 1517130847372, "type": "message"}
     #print(TextMessage) <class 'linebot.models.messages.TextMessage'>
     #print(MessageEvent) <class 'linebot.models.events.MessageEvent'>
 
@@ -83,7 +110,7 @@ def message_image(event):
         event.reply_token,
         TextSendMessage(text="this is an image")
     )
-    print(event)
+    #print(event) {"message": {"id": "7383080355073", "type": "image"}, "replyToken": "c6085bb46d0247f1928a650398316177", "source": {"type": "user", "userId": "Uec77d4b728f94e4f02c6aac6b15e5788"}, "timestamp": 1517130917849, "type": "message"}
     #print(ImageMessage) <class 'linebot.models.messages.ImageMessage'>
     #print(MessageEvent) <class 'linebot.models.events.MessageEvent'>
 
