@@ -62,7 +62,7 @@ def callback():
 def message_text(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
-    if event.message.text == "Hi bob":
+    if event.message.text == "Hibob":
         buttons_template = TemplateSendMessage(
             alt_text='HI BOB template',
             template=ButtonsTemplate(
