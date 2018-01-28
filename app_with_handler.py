@@ -30,6 +30,11 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
     ImageMessage, ImageSendMessage,
+    VideoMessage, VideoSendMessage,
+    AudioMessage, AudioSendMessage,
+    LocationMessage, LocationSendMessage,
+    StickerMessage, StickerSendMessage,
+    FileMessage, FileSendMessage
 )
 
 app = Flask(__name__)
@@ -67,8 +72,8 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text=event.message.text)
     )
-    print(TextMessage)
-    print(MessageEvent)
+    #print(TextMessage) <class 'linebot.models.messages.TextMessage'>
+    #print(MessageEvent) <class 'linebot.models.events.MessageEvent'>
 
 
 @handler.add(MessageEvent, message=ImageMessage)
@@ -77,8 +82,43 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text="this is an image")
     )
-    print(ImageMessage)
-    print(MessageEvent)
+    #print(ImageMessage) <class 'linebot.models.messages.ImageMessage'>
+    #print(MessageEvent) <class 'linebot.models.events.MessageEvent'>
+
+@handler.add(MessageEvent, message=VideoMessage)
+def message_text(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="this is an video")
+    )
+
+@handler.add(MessageEvent, message=AudioMessage)
+def message_text(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="this is an audio")
+    )
+
+@handler.add(MessageEvent, message=LocationMessage)
+def message_text(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="this is an location")
+    )
+
+@handler.add(MessageEvent, message=StickerMessage)
+def message_text(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="this is an sticker")
+    )
+
+@handler.add(MessageEvent, message=FileMessage)
+def message_text(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text="this is an file")
+    )
 
 
 if __name__ == "__main__":
