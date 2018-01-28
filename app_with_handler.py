@@ -72,6 +72,7 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text=event.message.text)
     )
+    print(event)
     #print(TextMessage) <class 'linebot.models.messages.TextMessage'>
     #print(MessageEvent) <class 'linebot.models.events.MessageEvent'>
 
@@ -82,6 +83,7 @@ def message_image(event):
         event.reply_token,
         TextSendMessage(text="this is an image")
     )
+    print(event)
     #print(ImageMessage) <class 'linebot.models.messages.ImageMessage'>
     #print(MessageEvent) <class 'linebot.models.events.MessageEvent'>
 
