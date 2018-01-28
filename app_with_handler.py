@@ -135,6 +135,7 @@ def message_sticker(event):
         event.reply_token,
         TextSendMessage(text="this is an sticker")
     )
+    print(event)
 
 @handler.add(MessageEvent, message=FileMessage)
 def message_file(event):
