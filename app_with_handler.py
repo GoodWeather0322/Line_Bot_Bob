@@ -27,15 +27,7 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-    ImageMessage, ImageSendMessage,
-    VideoMessage, VideoSendMessage,
-    AudioMessage, AudioSendMessage,
-    LocationMessage, LocationSendMessage,
-    StickerMessage, StickerSendMessage,
-    FileMessage,
-)
+from linebot.models import *
 
 app = Flask(__name__)
 
@@ -70,7 +62,7 @@ def callback():
 def message_text(event):
     print("event.reply_token:", event.reply_token)
     print("event.message.text:", event.message.text)
-    if event.message.text == "hi bob":
+    if event.message.text == "Hi bob":
         buttons_template = TemplateSendMessage(
             alt_text='HI BOB template',
             template=ButtonsTemplate(
