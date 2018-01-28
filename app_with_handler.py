@@ -77,7 +77,7 @@ def message_text(event):
 
 
 @handler.add(MessageEvent, message=ImageMessage)
-def message_text(event):
+def message_image(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="this is an image")
@@ -86,35 +86,35 @@ def message_text(event):
     #print(MessageEvent) <class 'linebot.models.events.MessageEvent'>
 
 @handler.add(MessageEvent, message=VideoMessage)
-def message_text(event):
+def message_video(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="this is an video")
     )
 
 @handler.add(MessageEvent, message=AudioMessage)
-def message_text(event):
+def message_audio(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="this is an audio")
     )
 
 @handler.add(MessageEvent, message=LocationMessage)
-def message_text(event):
+def message_location(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="this is an location")
     )
 
 @handler.add(MessageEvent, message=StickerMessage)
-def message_text(event):
+def message_sticker(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="this is an sticker")
     )
 
 @handler.add(MessageEvent, message=FileMessage)
-def message_text(event):
+def message_file(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text="this is an file")
