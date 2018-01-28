@@ -85,6 +85,7 @@ def message_text(event):
                 ]
             )
         )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
     else:
         line_bot_api.reply_message(
