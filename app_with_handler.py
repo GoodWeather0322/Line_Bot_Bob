@@ -66,7 +66,7 @@ def message_text(event):
         event.reply_token,
         TextSendMessage(text=event.message.text)
     )
-    print(message)
+    print(TextMessage)
 
 
 if __name__ == "__main__":
