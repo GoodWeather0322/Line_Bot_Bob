@@ -64,7 +64,7 @@ def message_text(event):
     print("event.message.text:", event.message.text)
     if event.message.text == "Hibob":
         buttons_template = TemplateSendMessage(
-            alt_text='HI BOB template',
+            alt_text='Bob說你好',
             template=ButtonsTemplate(
                 title='BOB的功能',
                 text='請選擇',
