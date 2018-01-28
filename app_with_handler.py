@@ -50,10 +50,6 @@ def callback():
     # get request body as text
     body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=signature)
-    )
 
     # handle webhook body
     try:
