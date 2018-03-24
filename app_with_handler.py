@@ -87,11 +87,7 @@ def message_text(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    elif event.message.text == "天氣":
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text="123123")
-        return 0
+
     else:
         line_bot_api.reply_message(
             event.reply_token,
