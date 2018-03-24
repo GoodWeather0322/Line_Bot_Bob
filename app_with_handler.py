@@ -86,13 +86,18 @@ def message_text(event):
             )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template) 
-    
+
+    elif event.message.text == "天氣":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="想知道嗎，自己查\nhttps://www.cwb.gov.tw/V7/index.htm")
+        )
+        
     else:
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=event.message.text)
-        
-    )
+        )
 
     #print(event) {"message": {"id": "7383075542344", "text": "T", "type": "text"}, "replyToken": "bb86d70489324c9d97a4e3e62b581fe6", "source": {"type": "user", "userId": "Uec77d4b728f94e4f02c6aac6b15e5788"}, "timestamp": 1517130847372, "type": "message"}
     #print(TextMessage) <class 'linebot.models.messages.TextMessage'>
