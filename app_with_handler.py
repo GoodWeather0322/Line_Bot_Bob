@@ -82,6 +82,10 @@ def message_text(event):
                         label='天氣',
                         text='天氣'
                     ),
+                    MessageTemplateAction(
+                        label='現在天氣',
+                        text='現在天氣'
+                    ),
                 ]
             )
         )
@@ -92,7 +96,13 @@ def message_text(event):
             event.reply_token,
             TextSendMessage(text="想知道嗎，自己查\nhttps://www.cwb.gov.tw/V7/index.htm")
         )
-        
+
+    elif event.message.text == "現在天氣":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="BOB心中的天氣永遠都是30度晴天喔!!")
+        )
+
     else:
         line_bot_api.reply_message(
             event.reply_token,
