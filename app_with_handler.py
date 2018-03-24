@@ -91,6 +91,7 @@ def message_text(event):
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text="想知道嗎，自己查\nhttps://www.cwb.gov.tw/V7/index.htm")
+        return 0
     else:
         line_bot_api.reply_message(
             event.reply_token,
