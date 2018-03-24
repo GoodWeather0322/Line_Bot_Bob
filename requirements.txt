@@ -12,3 +12,5 @@ flask
 python-editor
 pycparser
 imgurpython
+bs4
+beautifulsoup4
