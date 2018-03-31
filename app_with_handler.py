@@ -116,10 +116,6 @@ def message_text(event):
 
 @handler.add(MessageEvent, message=ImageMessage)
 def message_image(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="this is an image")
-    )
     imageMessage = ImageSendMessage(
             original_content_url='https://is4-ssl.mzstatic.com/image/thumb/Purple111/v4/50/0b/3b/500b3b8f-b72d-b4b0-d487-d317ed24914e/pr_source.png/246x0w.png',
             preview_image_url='https://is4-ssl.mzstatic.com/image/thumb/Purple111/v4/50/0b/3b/500b3b8f-b72d-b4b0-d487-d317ed24914e/pr_source.png/246x0w.png')
