@@ -122,10 +122,11 @@ def message_image(event):
     )
     imageMessage = ImageSendMessage(
             original_content_url='https://is4-ssl.mzstatic.com/image/thumb/Purple111/v4/50/0b/3b/500b3b8f-b72d-b4b0-d487-d317ed24914e/pr_source.png/246x0w.png',
-            preview_image_url='https://is4-ssl.mzstatic.com/image/thumb/Purple111/v4/50/0b/3b/500b3b8f-b72d-b4b0-d487-d317ed24914e/pr_source.png/246x0w.png'
-        )
+            preview_image_url='https://is4-ssl.mzstatic.com/image/thumb/Purple111/v4/50/0b/3b/500b3b8f-b72d-b4b0-d487-d317ed24914e/pr_source.png/246x0w.png')
     line_bot_api.reply_message(
-            event.reply_token, imageMessage)
+        event.reply_token, 
+        imageMessage
+    )
     #print(event) {"message": {"id": "7383080355073", "type": "image"}, "replyToken": "c6085bb46d0247f1928a650398316177", "source": {"type": "user", "userId": "Uec77d4b728f94e4f02c6aac6b15e5788"}, "timestamp": 1517130917849, "type": "message"}
     #print(ImageMessage) <class 'linebot.models.messages.ImageMessage'>
     #print(MessageEvent) <class 'linebot.models.events.MessageEvent'>
