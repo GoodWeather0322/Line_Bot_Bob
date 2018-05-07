@@ -18,7 +18,9 @@ import requests
 import re
 import random
 import configparser
+import urllib.request
 from argparse import ArgumentParser
+from bs4 import BeautifulSoup
 
 from flask import Flask, request, abort
 from linebot import (
@@ -37,8 +39,6 @@ config.read("config.ini")
 
 line_bot_api = LineBotApi(config['line_bot']['Channel_Access_Token'])
 handler = WebhookHandler(config['line_bot']['Channel_Secret'])
-
-
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -79,19 +79,35 @@ def message_text(event):
                         text='BOB現在很廢 只會回話'
                     ),
                     MessageTemplateAction(
-                        label='BOB現在很廢 只知道你傳啥',
-                        text='BOB現在很廢 只知道你傳啥'
+                        label='天氣',
+                        text='天氣'
+                    ),
+                    MessageTemplateAction(
+                        label='現在天氣',
+                        text='現在天氣'
                     ),
                 ]
             )
         )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
-        return 0
+        line_bot_api.reply_message(event.reply_token, buttons_template) 
+
+    elif event.message.text == "天氣":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="想知道嗎，自己查\nhttps://www.cwb.gov.tw/V7/index.htm")
+        )
+
+    elif event.message.text == "現在天氣":
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text="BOB心中的天氣永遠都是30度晴天喔!!")
+        )
+
     else:
         line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text)
-    )
+            event.reply_token,
+            TextSendMessage(text=event.message.text)
+        )
 
     #print(event) {"message": {"id": "7383075542344", "text": "T", "type": "text"}, "replyToken": "bb86d70489324c9d97a4e3e62b581fe6", "source": {"type": "user", "userId": "Uec77d4b728f94e4f02c6aac6b15e5788"}, "timestamp": 1517130847372, "type": "message"}
     #print(TextMessage) <class 'linebot.models.messages.TextMessage'>
@@ -100,9 +116,12 @@ def message_text(event):
 
 @handler.add(MessageEvent, message=ImageMessage)
 def message_image(event):
+    imageMessage = ImageSendMessage(
+            original_content_url='https://is4-ssl.mzstatic.com/image/thumb/Purple111/v4/50/0b/3b/500b3b8f-b72d-b4b0-d487-d317ed24914e/pr_source.png/246x0w.png',
+            preview_image_url='https://is4-ssl.mzstatic.com/image/thumb/Purple111/v4/50/0b/3b/500b3b8f-b72d-b4b0-d487-d317ed24914e/pr_source.png/246x0w.png')
     line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text="this is an image")
+        event.reply_token, 
+        imageMessage
     )
     #print(event) {"message": {"id": "7383080355073", "type": "image"}, "replyToken": "c6085bb46d0247f1928a650398316177", "source": {"type": "user", "userId": "Uec77d4b728f94e4f02c6aac6b15e5788"}, "timestamp": 1517130917849, "type": "message"}
     #print(ImageMessage) <class 'linebot.models.messages.ImageMessage'>
