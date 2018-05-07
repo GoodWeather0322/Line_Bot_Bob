@@ -100,7 +100,7 @@ def message_text(event):
     elif event.message.text == "現在天氣":
         line_bot_api.reply_message(
             event.reply_token,
-            TextSendMessage(text="BOB=40度")
+            TextSendMessage(text="BOB等於40度")
         )
 
     else:
